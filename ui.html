@@ -1,0 +1,26 @@
+<div class="hero">
+  <div class="hero-eyebrow">AI BIOMECHANICS COACH · GEMINI VISION</div>
+  <h1 class="hero-title">ROAST <span class="accent">MY</span> FORM</h1>
+  <p class="hero-sub">
+    Snap your starting posture. Get roasted.<br>
+    Fix your reps before they wreck your knees.
+  </p>
+</div>
+
+<template id="fix-template">
+  <div class="fix-step">
+    <span class="fix-num">{{NUMBER}}</span>
+    <span>{{TIP}}</span>
+  </div>
+</template>
+
+<template id="flaw-template">
+  <div class="flaw-pill severity-{{SEVERITY}}">
+    <span class="flaw-tag">{{SEVERITY_UPPER}}</span>
+    <span class="flaw-body"><b>{{NAME}}</b> — {{DETAIL}}</span>
+  </div>
+</template>
+
+<template id="roast-template">
+  <div class="roast-text">{{ROAST}}</div>
+</template>

@@ -1,0 +1,777 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+
+:root {
+    --bg: #14151A;
+    --bg-card: #1B1D24;
+    --bg-card-2: #20222B;
+
+    --chalk: #F5F5F0;
+    --muted: #9A9CA5;
+
+    --heat: #FF6B35;
+    --heat-dim: rgba(255, 107, 53, 0.35);
+
+    --danger: #FF3B3B;
+    --warn: #FFB020;
+    --ok: #3DDC97;
+}
+
+
+.stApp {
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(255, 107, 53, 0.08),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 100%,
+            rgba(61, 220, 151, 0.06),
+            transparent 40%
+        ),
+        var(--bg);
+
+    color: var(--chalk);
+
+    font-family: 'Inter', sans-serif;
+}
+
+
+#MainMenu,
+footer,
+header {
+    visibility: hidden;
+}
+
+
+.block-container {
+    max-width: 1400px;
+
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+    text-align: center;
+
+    padding:
+        2.5rem
+        1rem
+        1.5rem;
+
+    animation:
+        heroFade
+        0.8s
+        ease-out
+        both;
+}
+
+
+.hero-eyebrow {
+    font-family:
+        'JetBrains Mono',
+        monospace;
+
+    letter-spacing: 0.18em;
+
+    font-size: 0.72rem;
+
+    color: var(--heat);
+
+    margin-bottom: 0.6rem;
+
+    font-weight: 700;
+
+    animation:
+        slideDown
+        0.7s
+        ease-out
+        both;
+}
+
+
+.hero-title {
+    font-family:
+        'Bebas Neue',
+        sans-serif;
+
+    font-size:
+        clamp(
+            3rem,
+            8vw,
+            5.5rem
+        );
+
+    letter-spacing: 0.04em;
+
+    line-height: 0.95;
+
+    margin: 0;
+
+    color: var(--chalk);
+
+    text-shadow:
+        0 0 40px
+        rgba(
+            255,
+            107,
+            53,
+            0.25
+        );
+
+    animation:
+        titleReveal
+        0.9s
+        ease-out
+        both;
+}
+
+
+.hero-title .accent {
+    color: var(--heat);
+}
+
+
+.hero-sub {
+    color: var(--muted);
+
+    font-size: 1rem;
+
+    margin-top: 0.5rem;
+
+    animation:
+        fadeUp
+        1s
+        ease-out
+        both;
+}
+
+
+/* ============================================================
+   PANEL
+   ============================================================ */
+
+.panel-label {
+    font-family:
+        'JetBrains Mono',
+        monospace;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.14em;
+
+    color: var(--muted);
+
+    border-bottom:
+        1px dashed
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    padding-bottom: 0.6rem;
+
+    margin-bottom: 1rem;
+}
+
+
+div[data-testid="stForm"] {
+    background:
+        linear-gradient(
+            160deg,
+            var(--bg-card-2),
+            var(--bg-card)
+        ) !important;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        ) !important;
+
+    border-radius: 18px !important;
+
+    padding: 1.6rem !important;
+
+    box-shadow:
+        0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        )
+        inset,
+
+        0 20px 40px -18px
+        rgba(
+            0,
+            0,
+            0,
+            0.65
+        );
+
+    margin-bottom: 1rem !important;
+
+    animation:
+        panelSlideLeft
+        0.7s
+        ease-out
+        both;
+}
+
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+
+div[data-testid="stFormSubmitButton"] button {
+    background:
+        linear-gradient(
+            135deg,
+            var(--heat),
+            #FF8A5C
+        ) !important;
+
+    color:
+        #14151A !important;
+
+    border: none !important;
+
+    border-radius:
+        12px !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        0.04em;
+
+    padding:
+        0.7rem 1rem !important;
+
+    box-shadow:
+        0 8px 24px -6px
+        var(--heat-dim);
+
+    transition:
+        transform 150ms ease,
+        box-shadow 150ms ease;
+
+    animation:
+        buttonPulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+div[data-testid="stFormSubmitButton"] button:hover {
+    transform:
+        translateY(-2px)
+        scale(1.01);
+
+    box-shadow:
+        0 12px 30px -6px
+        var(--heat-dim);
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+    text-align: center;
+
+    padding: 3rem 1rem;
+
+    color: var(--muted);
+
+    background:
+        linear-gradient(
+            160deg,
+            var(--bg-card-2),
+            var(--bg-card)
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    border-radius: 18px;
+
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    animation:
+        panelSlideRight
+        0.8s
+        ease-out
+        both;
+}
+
+
+.empty-icon {
+    font-size: 2.4rem;
+
+    margin-bottom: 0.6rem;
+
+    opacity: 0.8;
+}
+
+
+/* ============================================================
+   ROAST
+   ============================================================ */
+
+.roast-text {
+    background:
+        rgba(
+            255,
+            107,
+            53,
+            0.08
+        );
+
+    border-left:
+        3px solid
+        var(--heat);
+
+    padding:
+        0.9rem 1rem;
+
+    border-radius:
+        0 10px 10px 0;
+
+    font-size:
+        0.98rem;
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        1rem;
+
+    animation:
+        fadeUp
+        0.6s
+        ease-out
+        both;
+}
+
+
+/* ============================================================
+   FLAWS
+   ============================================================ */
+
+.flaw-pill {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.6rem;
+
+    background:
+        var(--bg-card-2);
+
+    border-radius:
+        10px;
+
+    padding:
+        0.55rem 0.8rem;
+
+    margin-bottom:
+        0.5rem;
+
+    border-left:
+        3px solid
+        var(--muted);
+
+    animation:
+        slideIn
+        0.45s
+        ease
+        both;
+}
+
+
+.flaw-pill.severity-high {
+    border-left-color:
+        var(--danger);
+}
+
+
+.flaw-pill.severity-medium {
+    border-left-color:
+        var(--warn);
+}
+
+
+.flaw-pill.severity-low {
+    border-left-color:
+        var(--ok);
+}
+
+
+.flaw-tag {
+    font-family:
+        'JetBrains Mono',
+        monospace;
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        700;
+
+    padding:
+        0.15rem 0.45rem;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    color:
+        var(--muted);
+
+    flex-shrink:
+        0;
+}
+
+
+.severity-high .flaw-tag {
+    color:
+        var(--danger);
+}
+
+
+.severity-medium .flaw-tag {
+    color:
+        var(--warn);
+}
+
+
+.severity-low .flaw-tag {
+    color:
+        var(--ok);
+}
+
+
+.flaw-body {
+    font-size:
+        0.9rem;
+
+    color:
+        var(--chalk);
+}
+
+
+/* ============================================================
+   FIX PLAN
+   ============================================================ */
+
+.fix-step {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 0.7rem;
+
+    font-size:
+        0.92rem;
+
+    color:
+        var(--chalk);
+
+    margin-bottom:
+        0.45rem;
+
+    animation:
+        fadeUp
+        0.5s
+        ease
+        both;
+}
+
+
+.fix-num {
+    font-family:
+        'JetBrains Mono',
+        monospace;
+
+    color:
+        var(--heat);
+
+    font-weight:
+        700;
+
+    flex-shrink:
+        0;
+}
+
+
+/* ============================================================
+   IMAGE
+   ============================================================ */
+
+div[data-testid="stImage"] img {
+    border-radius:
+        12px;
+
+    transition:
+        transform
+        0.35s
+        ease,
+
+        box-shadow
+        0.35s
+        ease;
+}
+
+
+div[data-testid="stImage"] img:hover {
+    transform:
+        scale(1.02);
+
+    box-shadow:
+        0 15px 40px
+        rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+section[data-testid="stSidebar"] {
+    background:
+        var(--bg-card);
+
+    border-right:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes heroFade {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes slideDown {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes titleReveal {
+
+    from {
+        opacity: 0;
+
+        letter-spacing:
+            0.25em;
+
+        transform:
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+
+        letter-spacing:
+            0.05em;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes panelSlideLeft {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes panelSlideRight {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes buttonPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 8px 24px -6px
+            var(--heat-dim);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 32px -4px
+            rgba(
+                255,
+                107,
+                53,
+                0.7
+            );
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top:
+            1.5rem;
+    }
+
+    .hero-title {
+        font-size:
+            clamp(
+                3rem,
+                18vw,
+                5rem
+            );
+    }
+
+    div[data-testid="stForm"] {
+        padding:
+            1rem !important;
+    }
+}
